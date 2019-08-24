@@ -1,0 +1,36 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_method_executor_wizard_form">
+            <field name="name">method.executor.wizard.view.form</field>
+            <field name="model">method.executor.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="exc_type"/>
+                            <field name="ref_id" attrs="{'invisible': [('exc_type', '=', 'model')]}"/>
+                            <field name="res_model" attrs="{'invisible': [('exc_type', '=', 'record')]}"/>
+                            <field name="method_name"/>
+                            <field name="context"/>
+                            <field name="exc_args"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="action_execute" string="Execute" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_method_executor">
+            <field name="name">Method Executor</field>
+            <field name="res_model">method.executor.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem name="Method executor" id="menu_method_executor" parent="base.next_id_9"
+                  action="action_method_executor" sequence="50"/>
+    </data>
+</odoo>
