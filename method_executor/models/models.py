@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
+
+from odoo.tools.safe_eval import safe_eval
 
 
 class MethodExecutorWizard(models.TransientModel):
@@ -26,4 +29,16 @@ class MethodExecutorWizard(models.TransientModel):
 
     @api.multi
     def action_execute(self):
-        pass
+        if self.exc_type == 'model':
+            exc_object = self.env[self.res_model]
+        else:
+            exc_object = self.ref_id
+        name = self.method_name
+        if not hasattr(exc_object, name):
+            raise ValidationError('Method `{}` not found.'.format(name))
+        context = self.context or {}
+        if context:
+            context = safe_eval(context)
+        exc_object = exc_object.with_context(**context)
+        func = getattr(exc_object, name)
+        return func()
