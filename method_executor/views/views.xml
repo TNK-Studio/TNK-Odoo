@@ -12,7 +12,7 @@
                             <field name="res_model" attrs="{'invisible': [('exc_type', '=', 'record')]}"/>
                             <field name="method_name"/>
                             <field name="context"/>
-                            <field name="exc_args"/>
+                            <field name="exc_args" placeholder="[[args1, args2, ...], {'key': 'value', ...}]"/>
                         </group>
                     </sheet>
                     <footer>

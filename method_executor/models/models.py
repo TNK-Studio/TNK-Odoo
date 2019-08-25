@@ -40,5 +40,15 @@ class MethodExecutorWizard(models.TransientModel):
         if context:
             context = safe_eval(context)
         exc_object = exc_object.with_context(**context)
+        args = []
+        kwargs = {}
+        if self.exc_args:
+            exc_args = safe_eval(self.exc_args)
+            args = exc_args[0]
+            kwargs = exc_args[1] if len(exc_args) == 2 else {}
         func = getattr(exc_object, name)
-        return func()
+        try:
+            res = func(*args, **kwargs)
+        except Exception as e:
+            raise ValidationError(e)
+        return res
