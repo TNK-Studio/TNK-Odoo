@@ -1,4 +1,4 @@
-![License: AGPL-3](https://img.shields.io/badge/license-AGPL--3-blue.svg)
+![License: LGPL-3](https://img.shields.io/badge/license-LGPL--3-blue.svg)
 
 # Web Search Hide Menu
 

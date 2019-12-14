@@ -1,2 +1,3 @@
-# TNK-Odoo-Module
-Odoo modules by TNK.
+# TNK-Odoo
+
+Addons for Odoo 🛠
