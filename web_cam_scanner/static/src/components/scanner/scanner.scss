@@ -1,0 +1,15 @@
+/* Copyright 2024 Ruter Lü <https://ruterly.com>
+ * License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl). */
+
+.wc-scanner-overlay {
+    position: fixed !important;
+    z-index: 99;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.wc-scanner-overlay.hidden {
+    display: none !important;
+}
