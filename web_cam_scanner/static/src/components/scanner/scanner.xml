@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="web_cam_scanner.Scanner">
+        <div class="wc-scanner">
+            <button type="button" t-attf-class="btn {{props.buttonClass || ''}}" t-on-click="onScanClicked">
+                <t t-if="!props.slots or !props.slots.default">
+                    <i class="fa fa-camera"></i>
+                </t>
+                <t t-else="" t-slot="default" />
+            </button>
+            <div t-attf-class="wc-scanner-overlay d-flex flex-column justify-content-center align-items-center bg-white {{state.showScanOverlay ? '' : 'hidden'}}">
+                <div id="codeReader" class="w-100" t-ref="scannerRef"></div>
+                <button type="button" class="wc-scanner-stop btn-close mt-2" t-on-click.stop="onScanStopCliked"></button>
+            </div>
+        </div>
+    </t>
+</templates>
